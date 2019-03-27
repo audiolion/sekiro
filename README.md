@@ -1,2 +1,3 @@
-# sekiro
-Sekiro UI
+# Sekiro UI
+
+The Sekiro UI recreated using web technology.

@@ -1,23 +1,54 @@
 import * as React from 'react';
-import { Button } from '@material-ui/core';
+import { default as classNames } from 'classnames';
+import {
+  Button,
+  createStyles,
+  Omit,
+  WithStyles,
+  withStyles
+} from '@material-ui/core';
 import { PageIcons } from './PageIcons';
 import { Dock } from './Dock';
 import { noop } from '../functions/noop';
 
-export type PagesProps = React.PropsWithChildren<object> &
-  Pick<React.HTMLAttributes<HTMLDivElement>, 'className'> & {
+const styles = createStyles({
+  pages: {
+    display: 'flex',
+    position: 'relative'
+  },
+  page: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1
+  }
+});
+
+export type PagesProps = WithStyles<typeof styles> &
+  Omit<React.HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'> & {
     value?: number;
     onChange?: (newIndex: number) => any;
+    children: React.ReactElement[];
   };
 
-export const Pages = (props: PagesProps) => {
-  const { children, value = 0, onChange = noop, ...divProps } = props;
+export const Pages = withStyles(styles)((props: PagesProps) => {
+  const {
+    children,
+    value = 0,
+    onChange = noop,
+    classes,
+    className,
+    ...divProps
+  } = props;
   const childrenArray = React.Children.toArray(children);
   const currentPage = childrenArray[value];
+  const currentPageWithStyle = React.cloneElement(currentPage, {
+    ...currentPage.props,
+    className: classNames(classes.page, currentPage.props.className)
+  });
   const changeToNextPage = () => onChange((value + 1) % childrenArray.length);
   return (
-    <div {...divProps} style={{ position: 'relative' }}>
-      {currentPage}
+    <div {...divProps} className={classNames(classes.pages, className)}>
+      {currentPageWithStyle}
       <Dock style={{ display: 'flex' }} position="bottomRight">
         <Button onClick={changeToNextPage}>Toggle</Button>
         <PageIcons
@@ -28,4 +59,4 @@ export const Pages = (props: PagesProps) => {
       </Dock>
     </div>
   );
-};
+});

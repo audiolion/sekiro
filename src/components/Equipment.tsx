@@ -34,13 +34,7 @@ export const styles = createStyles({
     gridArea: 'jutsu'
   },
   pages: {
-    gridArea: 'pages',
-    display: 'flex'
-  },
-  page: {
-    display: 'flex',
-    flexDirection: 'column',
-    flex: 1
+    gridArea: 'pages'
   }
 });
 
@@ -74,7 +68,7 @@ export const Equipment = withStyles(styles)(
           value={pageIndex}
           onChange={setPageIndex}
         >
-          <Page className={classes.page}>
+          <Page>
             <Header variant="doubleEdge">
               <Typography>Floating Passage</Typography>
             </Header>
@@ -95,7 +89,7 @@ export const Equipment = withStyles(styles)(
               Her name was Tomoe.
             </Typography>
           </Page>
-          <Page className={classes.page}>
+          <Page>
             <Header variant="doubleEdge">
               <Typography>Ornamental Letter</Typography>
             </Header>

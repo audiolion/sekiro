@@ -25,13 +25,15 @@ export const TabbedContent = withStyles(styles)(
             <Tab key={index} {...tabProps} />
           ))}
         </Tabs>
-        <div className={classes.content}>{tabs[tabIndex].content()}</div>
+        <div className={classes.content}>
+          {React.createElement(tabs[tabIndex].content)}
+        </div>
       </>
     );
   }
 );
 
-export type TabbedContentTab = TabProps & { content: () => React.ReactNode };
+export type TabbedContentTab = TabProps & { content: React.ComponentType };
 
 export type TabbedContentProps = WithStyles<typeof styles> & {
   tabs: TabbedContentTab[];

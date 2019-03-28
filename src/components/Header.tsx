@@ -1,17 +1,38 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core';
+import { Theme, WithStyles, withStyles } from '@material-ui/core';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
-export const styles = () => ({
+const variants = (theme: Theme) => ({
+  noEdge: {
+    background: fade(theme.palette.common.black, 0.75)
+  },
+  singleEdge: {
+    background: `linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(125,185,232,0) 100%)`
+  },
+  doubleEdge: {
+    background: `linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,0.25) 50%,rgba(0,0,0,1) 100%)`,
+    textAlign: 'center'
+  } as CSSProperties
+});
+
+const styles = (theme: Theme) => ({
   header: {
     background: 'rgba(0, 0, 0, 0.75)',
     padding: `5px 10px`
-  }
+  },
+  ...variants(theme)
 });
 
-export type HeaderProps = WithStyles<typeof styles> & React.ComponentProps<any>;
+export type HeaderVariant = keyof ReturnType<typeof variants>;
+
+export type HeaderProps = WithStyles<typeof styles> &
+  React.PropsWithChildren<{
+    variant?: HeaderVariant;
+  }>;
 
 export const Header = withStyles(styles)(
-  ({ classes, children }: HeaderProps) => (
-    <header className={classes.header}>{children}</header>
+  ({ classes, children, variant = 'singleEdge' }: HeaderProps) => (
+    <header className={classes[variant]}>{children}</header>
   )
 );

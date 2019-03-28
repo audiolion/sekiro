@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core';
+import { Typography, WithStyles, withStyles } from '@material-ui/core';
+import { Header } from './Header';
 
 export const styles = () => ({
   root: {
@@ -32,10 +33,26 @@ export const styles = () => ({
 export const Equipment = withStyles(styles)(
   ({ classes }: WithStyles<typeof styles>) => (
     <div className={classes.root}>
-      <div className={classes.tools}>Tools</div>
-      <div className={classes.items}>Items</div>
-      <div className={classes.arts}>Arts</div>
-      <div className={classes.jutsu}>Jutsu</div>
+      <div className={classes.tools}>
+        <Header>
+          <Typography>Prosthetic Tools</Typography>
+        </Header>
+      </div>
+      <div className={classes.items}>
+        <Header>
+          <Typography>Quick Items</Typography>
+        </Header>
+      </div>
+      <div className={classes.arts}>
+        <Header>
+          <Typography>Combat Arts</Typography>
+        </Header>
+      </div>
+      <div className={classes.jutsu}>
+        <Header>
+          <Typography>Ninjutsu</Typography>
+        </Header>
+      </div>
       <div className={classes.page}>Page</div>
     </div>
   )

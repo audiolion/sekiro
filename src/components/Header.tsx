@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { default as classNames } from 'classnames';
 import { Theme, WithStyles, withStyles } from '@material-ui/core';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
@@ -18,8 +19,8 @@ const variants = (theme: Theme) => ({
 
 const styles = (theme: Theme) => ({
   header: {
-    background: 'rgba(0, 0, 0, 0.75)',
-    padding: `5px 10px`
+    padding: `5px 10px`,
+    marginBottom: 10
   },
   ...variants(theme)
 });
@@ -33,6 +34,8 @@ export type HeaderProps = WithStyles<typeof styles> &
 
 export const Header = withStyles(styles)(
   ({ classes, children, variant = 'singleEdge' }: HeaderProps) => (
-    <header className={classes[variant]}>{children}</header>
+    <header className={classNames(classes.header, classes[variant])}>
+      {children}
+    </header>
   )
 );

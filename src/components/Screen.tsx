@@ -18,7 +18,7 @@ export const styles = createStyles({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: '50% 50%',
-    padding: `22px 30px`
+    padding: `35px 50px`
   }
 });
 

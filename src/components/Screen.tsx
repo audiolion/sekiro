@@ -14,6 +14,7 @@ export const styles = createStyles({
   content: {
     display: 'flex',
     flex: 1,
+    flexDirection: 'column',
     background: `url(${require('../assets/screen-background.jpg')})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',

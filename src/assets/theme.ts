@@ -7,7 +7,8 @@ export const createSekiroTheme = () =>
       useNextVariants: true,
       fontFamily: `"${fonts.Default}", "Helvetica", "Arial", "sans-serif"`,
       allVariants: {
-        color: 'inherit'
+        color: 'inherit',
+        textShadow: '2px 2px 4px #000000'
       }
     }
   });

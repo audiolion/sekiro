@@ -6,13 +6,15 @@ import { AppState } from '../state/AppState';
 import { Size } from '../state/Size';
 
 const referenceSize = { width: 1920, height: 1080 };
+const aspectRatio = referenceSize.width / referenceSize.height;
 
 function createBoundsStyle(viewportSize: Size) {
   const scale = viewportSize.width / referenceSize.width;
+  const transformedHeight = viewportSize.width / aspectRatio;
+  const yOffset = (viewportSize.height - transformedHeight) / 2;
   return {
-    margin: 'auto',
-    transform: `scale(${scale})`,
-    transformOrigin: 'left',
+    transform: `translateY(${yOffset}px) scale(${scale})`,
+    transformOrigin: 'left top',
     ...referenceSize
   };
 }

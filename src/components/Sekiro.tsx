@@ -1,4 +1,4 @@
 import * as React from 'react';
-import { Typography } from '@material-ui/core';
+import { Screen } from './Screen';
 
-export const Sekiro = () => <Typography>Hello World</Typography>;
+export const Sekiro = () => <Screen />;

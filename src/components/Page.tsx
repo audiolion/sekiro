@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classNames from 'classnames';
 import { createStyles, withStyles, WithStyles } from '@material-ui/core';
 
 export const styles = createStyles({
@@ -10,6 +11,11 @@ export const styles = createStyles({
 export type PageProps = WithStyles<typeof styles> &
   React.HTMLAttributes<HTMLDivElement>;
 
-export const Page = withStyles(styles)(({ classes, children }: PageProps) => (
-  <div className={classes.page}>{children}</div>
-));
+export const Page = withStyles(styles)((props: PageProps) => {
+  const { classes, className, children, ...divProps } = props;
+  return (
+    <div className={classNames(classes.page, className)} {...divProps}>
+      {children}
+    </div>
+  );
+});

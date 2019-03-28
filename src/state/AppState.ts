@@ -1,13 +1,9 @@
 import { createContext } from 'react';
-import { createMuiTheme } from '@material-ui/core';
 import { observable } from 'mobx';
+import { createSekiroTheme } from '../assets/theme';
 
 export class AppState {
-  @observable theme = createMuiTheme({
-    typography: {
-      useNextVariants: true
-    }
-  });
+  @observable theme = createSekiroTheme();
 
   static Context = createContext(new AppState());
 }

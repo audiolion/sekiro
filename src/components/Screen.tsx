@@ -23,9 +23,12 @@ export const styles = createStyles({
 });
 
 export const Screen = withStyles(styles)(
-  ({ classes }: WithStyles<typeof styles>) => (
+  ({
+    classes,
+    children
+  }: WithStyles<typeof styles> & React.ComponentProps<any>) => (
     <div className={classes.container}>
-      <div className={classes.content} />
+      <div className={classes.content}>{children}</div>
     </div>
   )
 );

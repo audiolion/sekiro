@@ -1,8 +1,15 @@
 import * as React from 'react';
-import { Typography, WithStyles, withStyles } from '@material-ui/core';
+import {
+  createStyles,
+  Typography,
+  WithStyles,
+  withStyles
+} from '@material-ui/core';
 import { Header } from './Header';
+import { Pages } from './Pages';
+import { Page } from './Page';
 
-export const styles = () => ({
+export const styles = createStyles({
   root: {
     width: '100%',
     display: 'grid',
@@ -26,8 +33,14 @@ export const styles = () => ({
   jutsu: {
     gridArea: 'jutsu'
   },
+  pages: {
+    gridArea: 'pages',
+    display: 'flex'
+  },
   page: {
-    gridArea: 'page'
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1
   }
 });
 
@@ -54,7 +67,29 @@ export const Equipment = withStyles(styles)(
           <Typography>Ninjutsu</Typography>
         </Header>
       </div>
-      <div className={classes.page}>Page</div>
+      <Pages className={classes.pages}>
+        <Page className={classes.page}>
+          <Header variant="doubleEdge">
+            <Typography>Floating Passage</Typography>
+          </Header>
+          <Header variant="noEdge">
+            <Typography>Spirit Emblem Cost</Typography>
+          </Header>
+          <Typography paragraph>
+            Combat Art that unleashes repeated attacks, overwhelming enemies
+            with flowing, dance-like movements.
+          </Typography>
+          <Typography paragraph>
+            While an Ashina Combat Art, it was taught by an outsider, and as
+            such is considered heretical.
+            <br />
+            The master of this technique crossed the Floating Passage and
+            descended to Ashina.
+            <br />
+            Her name was Tomoe.
+          </Typography>
+        </Page>
+      </Pages>
     </div>
   )
 );

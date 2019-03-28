@@ -10,8 +10,8 @@ export const styles = () => ({
     gridRowGap: '20px',
     gridTemplateColumns: '2fr 1fr 2fr',
     gridTemplate: `
-      "tools arts page" 50%
-      "items jutsu page" 50%
+      "tools arts pages" 1fr
+      "items jutsu pages" 1fr
     `
   },
   tools: {

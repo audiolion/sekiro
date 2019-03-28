@@ -16,6 +16,10 @@ const config: Configuration = {
       {
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader'
+      },
+      {
+        test: /\.jpg$/,
+        loader: 'file-loader'
       }
     ]
   },

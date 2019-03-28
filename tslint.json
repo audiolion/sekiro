@@ -11,6 +11,7 @@
     "no-implicit-dependencies": [true, "dev"],
     "quotemark": [true, "single", "jsx-double"],
     "variable-name": [true, "check-format", "allow-pascal-case"],
+    "function-name": false,
     "no-console": false,
     "forin": false
   }

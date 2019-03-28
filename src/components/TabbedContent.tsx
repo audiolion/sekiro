@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   createStyles,
+  Divider,
   Tab,
   Tabs,
   WithStyles,
@@ -25,6 +26,7 @@ export const TabbedContent = withStyles(styles)(
             <Tab key={index} {...tabProps} />
           ))}
         </Tabs>
+        <Divider />
         <div className={classes.content}>
           {React.createElement(tabs[tabIndex].content)}
         </div>

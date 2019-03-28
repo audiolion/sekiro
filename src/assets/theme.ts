@@ -10,5 +10,15 @@ export const createSekiroTheme = () =>
         color: 'inherit',
         textShadow: '2px 2px 4px #000000'
       }
+    },
+    overrides: {
+      MuiDivider: {
+        root: {
+          marginTop: 10,
+          marginBottom: 10,
+          height: 5,
+          backgroundColor: 'black'
+        }
+      }
     }
   });

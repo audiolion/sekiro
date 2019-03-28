@@ -1,15 +1,14 @@
 import * as React from 'react';
+import { default as classNames } from 'classnames';
 import { createStyles, WithStyles, withStyles } from '@material-ui/core';
 
-const aspectRatio = 1920 / 1080;
 export const styles = createStyles({
   container: {
     width: '100%',
-    height: `${(1 / aspectRatio) * 100}vw`,
+    height: '100%',
     background: 'tomato',
     padding: `35px 50px`,
-    display: 'flex',
-    margin: 'auto'
+    display: 'flex'
   },
   content: {
     display: 'flex',
@@ -23,12 +22,12 @@ export const styles = createStyles({
   }
 });
 
+export type ScreenProps = WithStyles<typeof styles> &
+  React.HTMLAttributes<HTMLDivElement>;
+
 export const Screen = withStyles(styles)(
-  ({
-    classes,
-    children
-  }: WithStyles<typeof styles> & React.PropsWithChildren<object>) => (
-    <div className={classes.container}>
+  ({ classes, children, className, ...divProps }: ScreenProps) => (
+    <div className={classNames(classes.container, className)} {...divProps}>
       <div className={classes.content}>{children}</div>
     </div>
   )

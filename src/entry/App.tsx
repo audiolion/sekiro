@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Observer } from 'mobx-react';
+import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import { hot } from 'react-hot-loader/root';
 import { AppState } from '../state/AppState';
 import { Sekiro } from '../components/Sekiro';
@@ -16,7 +17,10 @@ export const App = hot(({ state }: AppProps) => (
   <Observer>
     {() => (
       <AppState.Context.Provider value={state}>
-        <Sekiro />
+        <MuiThemeProvider theme={state.theme}>
+          <CssBaseline />
+          <Sekiro />
+        </MuiThemeProvider>
       </AppState.Context.Provider>
     )}
   </Observer>

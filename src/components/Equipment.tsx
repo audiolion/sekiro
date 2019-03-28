@@ -8,9 +8,10 @@ export const styles = () => ({
     display: 'grid',
     gridColumnGap: '20px',
     gridRowGap: '20px',
+    gridTemplateColumns: '2fr 1fr 2fr',
     gridTemplate: `
-      "tools tools arts page page"
-      "items items jutsu page page"
+      "tools arts page" 50%
+      "items jutsu page" 50%
     `
   },
   tools: {

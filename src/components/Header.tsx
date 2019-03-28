@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { default as classNames } from 'classnames';
+import classNames from 'classnames';
 import { Theme, WithStyles, withStyles } from '@material-ui/core';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';

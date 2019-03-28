@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { default as classNames } from 'classnames';
+import classNames from 'classnames';
 import { createStyles, withStyles, WithStyles } from '@material-ui/core';
 
 export const styles = createStyles({

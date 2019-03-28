@@ -12,6 +12,7 @@
     "quotemark": [true, "single", "jsx-double"],
     "variable-name": [true, "check-format", "allow-pascal-case"],
     "function-name": false,
+    "import-name": false,
     "no-console": false,
     "forin": false
   }

@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  createStyles,
-  Typography,
-  WithStyles,
-  withStyles
-} from '@material-ui/core';
+import { createStyles, WithStyles, withStyles } from '@material-ui/core';
 
 const aspectRatio = 1920 / 1080;
 export const styles = createStyles({
@@ -19,16 +14,18 @@ export const styles = createStyles({
   content: {
     display: 'flex',
     flex: 1,
-    background: 'skyblue'
+    background: `url(${require('../assets/screen-background.jpg')})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: '50% 50%',
+    padding: `22px 30px`
   }
 });
 
 export const Screen = withStyles(styles)(
   ({ classes }: WithStyles<typeof styles>) => (
     <div className={classes.container}>
-      <div className={classes.content}>
-        <Typography>Hehe</Typography>
-      </div>
+      <div className={classes.content} />
     </div>
   )
 );

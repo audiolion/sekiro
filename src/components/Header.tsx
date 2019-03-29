@@ -20,7 +20,9 @@ const variants = (theme: Theme) => ({
 const styles = (theme: Theme) => ({
   header: {
     padding: `5px 10px`,
-    marginBottom: 10
+    '&:not(:last-child)': {
+      marginBottom: 10
+    }
   },
   ...variants(theme)
 });

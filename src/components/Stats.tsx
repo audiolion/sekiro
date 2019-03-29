@@ -20,7 +20,22 @@ export const Stats = (rowProps: RowProps) => (
       </Box>
     </Box>
     <Box direction="row" flex={3}>
-      <Box flex={5} />
+      <Box flex={5}>
+        <Row flex={1}>
+          <img src={require('../assets/vitality-icon.png')} height={23} />
+          <Row flex={1} align="space-between">
+            <Typography>Vitality</Typography>
+            <Typography>15</Typography>
+          </Row>
+        </Row>
+        <Row flex={1}>
+          <img src={require('../assets/attack-icon.png')} height={23} />
+          <Row flex={1} align="space-between">
+            <Typography>Attack</Typography>
+            <Typography>6</Typography>
+          </Row>
+        </Row>
+      </Box>
       <Box flex={6} />
     </Box>
     <Box flex={1} style={{ justifyContent: 'space-between' }}>

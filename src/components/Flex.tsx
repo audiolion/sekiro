@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { createStyles, Omit, withStyles, WithStyles } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/core';
 
 export const styles = createStyles({
   row: {
@@ -38,21 +38,11 @@ export const Flex = withStyles(styles)(
     ...divProps
   }: FlexProps) => (
     <div
-      style={{ flex, ...style }}
-      className={classNames(classes[direction], className)}
       {...divProps}
+      className={classNames(classes[direction], className)}
+      style={{ flex, ...style }}
     >
       {children}
     </div>
   )
-);
-
-export type RowProps = Omit<FlexProps, 'classes' | 'direction'>;
-
-export const Row = (props: RowProps) => <Flex direction="row" {...props} />;
-
-export type ColumnProps = Omit<FlexProps, 'classes' | 'direction'>;
-
-export const Column = (props: ColumnProps) => (
-  <Flex direction="column" {...props} />
 );

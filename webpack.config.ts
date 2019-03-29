@@ -18,7 +18,7 @@ const config: Configuration = {
         loader: 'awesome-typescript-loader'
       },
       {
-        test: /\.(jpg|woff2|css)$/,
+        test: /\.(png|jpg|woff2|css)$/,
         loader: 'file-loader'
       }
     ]

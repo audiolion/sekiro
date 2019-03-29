@@ -8,6 +8,7 @@ import {
 import { Header } from './Header';
 import { Pages } from './Pages';
 import { Page } from './Page';
+import { Stats } from './Stats';
 
 export const styles = createStyles({
   root: {
@@ -19,6 +20,7 @@ export const styles = createStyles({
     gridTemplate: `
       "tools arts pages" 1fr
       "items jutsu pages" 1fr
+      "stats stats stats" 100px
     `
   },
   tools: {
@@ -35,6 +37,9 @@ export const styles = createStyles({
   },
   pages: {
     gridArea: 'pages'
+  },
+  stats: {
+    gridArea: 'stats'
   }
 });
 
@@ -114,6 +119,7 @@ export const Equipment = withStyles(styles)(
             </Typography>
           </Page>
         </Pages>
+        <Stats className={classes.stats} />
       </div>
     );
   }

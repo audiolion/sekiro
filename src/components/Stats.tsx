@@ -4,6 +4,7 @@ import { Typography } from '@material-ui/core';
 import { Header } from './Header';
 import { Row, RowProps } from './Row';
 import { Column } from './Column';
+import { SkillProgressBar } from './SkillProgressBar';
 
 export const Stats = (rowProps: RowProps) => (
   <Row {...rowProps}>
@@ -36,7 +37,16 @@ export const Stats = (rowProps: RowProps) => (
           </Row>
         </Row>
       </Box>
-      <Box flex={6} />
+      <Box
+        flex={6}
+        style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}
+      >
+        <Row style={{ width: '100%' }} align="space-between">
+          <SkillProgressBar flex={1} points={1} value={0.67} />
+          <Typography>9373</Typography>
+        </Row>
+        <Typography>to next Skill Point 1400</Typography>
+      </Box>
     </Box>
     <Box flex={1} style={{ justifyContent: 'space-between' }}>
       <Box direction="row" style={{ justifyContent: 'space-between' }}>

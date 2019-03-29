@@ -3,12 +3,21 @@ import { Box } from './Box';
 import { Typography } from '@material-ui/core';
 import { Header } from './Header';
 import { Row, RowProps } from './Row';
+import { Column } from './Column';
 
 export const Stats = (rowProps: RowProps) => (
   <Row {...rowProps}>
     <Box direction="row" flex={3}>
       <Box flex={5} />
-      <Box flex={4} />
+      <Box flex={4}>
+        <Row>
+          <img src={require('../assets/unseen-aid-icon.png')} height={50} />
+          <Column>
+            <Typography>Unseen Aid</Typography>
+            <Typography>30%</Typography>
+          </Column>
+        </Row>
+      </Box>
     </Box>
     <Box direction="row" flex={3}>
       <Box flex={5} />

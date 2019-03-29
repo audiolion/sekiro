@@ -6,6 +6,7 @@ import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 export const styles = () => ({
   container: {
+    minHeight: 12,
     border: '1px solid grey',
     background: 'black'
   },

@@ -5,11 +5,16 @@ import { Header } from './Header';
 import { Row, RowProps } from './Row';
 import { Column } from './Column';
 import { SkillProgressBar } from './SkillProgressBar';
+import { HealthBar } from './HealthBar';
+import { Resurrections } from './Resurrections';
 
 export const Stats = (rowProps: RowProps) => (
   <Row {...rowProps}>
     <Box direction="row" flex={3}>
-      <Box flex={5} />
+      <Box flex={5}>
+        <Resurrections />
+        <HealthBar value={1} />
+      </Box>
       <Box flex={4}>
         <Row>
           <img src={require('../assets/unseen-aid-icon.png')} height={50} />

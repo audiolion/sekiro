@@ -5,6 +5,7 @@ import {
   WithStyles,
   withStyles
 } from '@material-ui/core';
+import { AppState } from '../state/AppState';
 import { Header } from './Header';
 import { Pages } from './Pages';
 import { Page } from './Page';
@@ -119,7 +120,9 @@ export const Equipment = withStyles(styles)(
             </Typography>
           </Page>
         </Pages>
-        <Stats className={classes.stats} />
+        <AppState.Context.Consumer>
+          {({ stats }) => <Stats className={classes.stats} stats={stats} />}
+        </AppState.Context.Consumer>
       </div>
     );
   }

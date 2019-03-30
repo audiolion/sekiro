@@ -79,3 +79,5 @@ export const Tile = withStyles(styles)(
     );
   }
 );
+
+Tile.displayName = 'Tile';

@@ -28,3 +28,5 @@ export const PageIcons = withStyles(styles)((props: PageIconsProps) => {
   }
   return <div className={classes.pageIcons}>{indicators}</div>;
 });
+
+PageIcons.displayName = 'PageIcons';

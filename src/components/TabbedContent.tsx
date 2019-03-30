@@ -40,3 +40,5 @@ export type TabbedContentTab = TabProps & { content: React.ComponentType };
 export type TabbedContentProps = WithStyles<typeof styles> & {
   tabs: TabbedContentTab[];
 };
+
+TabbedContent.displayName = 'TabbedContent';

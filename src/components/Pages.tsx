@@ -59,3 +59,5 @@ export const Pages = withStyles(styles)((props: PagesProps) => {
     </div>
   );
 });
+
+Pages.displayName = 'Pages';

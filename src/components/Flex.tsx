@@ -52,3 +52,5 @@ export const Flex = withStyles(styles)(
     )
   )
 );
+
+Flex.displayName = 'Flex';

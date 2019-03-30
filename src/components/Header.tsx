@@ -41,3 +41,5 @@ export const Header = withStyles(styles)(
     </header>
   )
 );
+
+Header.displayName = 'Header';

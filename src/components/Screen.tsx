@@ -32,3 +32,5 @@ export const Screen = withStyles(styles)(
     </div>
   )
 );
+
+Screen.displayName = 'Screen';

@@ -107,3 +107,5 @@ export const Equipment = withStyles(styles)(
       );
     })
 );
+
+Equipment.displayName = 'Equipment';

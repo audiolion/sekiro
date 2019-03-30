@@ -38,3 +38,5 @@ export const Dock = withStyles(positions)(
     </div>
   )
 );
+
+Dock.displayName = 'Dock';

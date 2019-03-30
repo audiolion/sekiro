@@ -31,3 +31,5 @@ export const ProgressBar = withStyles(styles)(
     </Row>
   )
 );
+
+ProgressBar.displayName = 'ProgressBar';

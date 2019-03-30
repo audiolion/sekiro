@@ -27,3 +27,5 @@ export const SkillIcon = withStyles(styles)(
     <Typography className={classes.skillIcon}>{points}</Typography>
   )
 );
+
+SkillIcon.displayName = 'SkillIcon';

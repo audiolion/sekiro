@@ -46,3 +46,5 @@ export const ListItem = withStyles(styles)(
     );
   }
 );
+
+ListItem.displayName = 'ListItem';

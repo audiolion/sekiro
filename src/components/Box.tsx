@@ -34,3 +34,5 @@ export const Box = withStyles(styles)(
     )
   )
 );
+
+Box.displayName = 'Box';

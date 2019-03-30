@@ -30,3 +30,5 @@ export const PageIcon = withStyles(styles)((props: PageIconProps) => {
     />
   );
 });
+
+PageIcon.displayName = 'PageIcon';

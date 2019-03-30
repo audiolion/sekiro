@@ -18,6 +18,11 @@ const config: Configuration = {
         loader: 'awesome-typescript-loader'
       },
       {
+        test: /\.jsx?$/,
+        include: /node_modules/,
+        use: ['react-hot-loader/webpack']
+      },
+      {
         test: /\.(png|jpg|woff2|css)$/,
         loader: 'file-loader'
       }

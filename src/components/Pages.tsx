@@ -1,15 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import {
-  Button,
-  createStyles,
-  Omit,
-  WithStyles,
-  withStyles
-} from '@material-ui/core';
+import { createStyles, Omit, WithStyles, withStyles } from '@material-ui/core';
 import { PageIcons } from './PageIcons';
 import { Dock } from './Dock';
 import { noop } from '../functions/noop';
+import { InlineActionButton } from './InlineActionButton';
 
 const styles = createStyles({
   pages: {
@@ -53,7 +48,7 @@ export const Pages = withStyles(styles)((props: PagesProps) => {
       {currentPageWithStyle}
       {childrenArray.length > 1 && (
         <Dock style={{ display: 'flex' }} position="bottomRight">
-          <Button onClick={changeToNextPage}>Toggle</Button>
+          <InlineActionButton input="Y" callback={changeToNextPage} />
           <PageIcons
             value={value}
             count={childrenArray.length}

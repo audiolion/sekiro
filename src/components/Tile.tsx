@@ -64,7 +64,7 @@ export const Tile = withStyles(styles)(
         input: 'A',
         name: <>OK ({children})</>,
         description: 'Replace and confirm equipped items',
-        callback: () => alert('Boo!')
+        callback: () => alert(children)
       },
       meta
     );

@@ -6,6 +6,7 @@ import { StatsStore } from './StatsStore';
 import { Spatial } from '../lib/spatial/Spatial';
 import { ActionStore } from '../lib/action/ActionStore';
 import { EquipmentStore } from './EquipmentStore';
+import { ItemSelectStore } from './ItemSelectStore';
 
 export class AppState {
   @observable theme = createSekiroTheme();
@@ -14,6 +15,7 @@ export class AppState {
   actions = new ActionStore();
   nav = new Spatial();
   equipment = new EquipmentStore();
+  itemSelect = new ItemSelectStore();
 
   static Context = createContext(new AppState());
 

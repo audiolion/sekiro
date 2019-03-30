@@ -4,9 +4,9 @@ import { Item } from '../state/Item';
 import { Tile, TileProps } from './Tile';
 import { Row, RowProps } from './Row';
 import { Action } from '../lib/action/Action';
-import { randomItem } from '../functions/randomItems';
 import { Omit } from '@material-ui/core';
 import { useObserver } from 'mobx-react-lite';
+import { AppState } from '../state/AppState';
 
 export type ItemSlotTilesProps = Omit<RowProps, 'classes'> & {
   slots: ItemSlots;
@@ -16,6 +16,7 @@ export type ItemSlotTilesProps = Omit<RowProps, 'classes'> & {
 
 export const ItemSlotTiles = (props: ItemSlotTilesProps) => {
   const { slots, available, tileProps, ...rowProps } = props;
+  const { itemSelect } = React.useContext(AppState.Context);
   return useObserver(() => (
     <Row {...rowProps}>
       {slots.list.map((item, index) => {
@@ -29,7 +30,10 @@ export const ItemSlotTiles = (props: ItemSlotTilesProps) => {
           input: 'A',
           name: 'Add',
           description: 'Add item to slot',
-          callback: () => slots.store(randomItem(available), index)
+          callback: () =>
+            itemSelect.start(available, selected =>
+              slots.store(selected, index)
+            )
         };
         const action = item ? removeAction : selectAction;
         return (

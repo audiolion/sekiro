@@ -23,7 +23,8 @@
     "react-dom": "16.8.5",
     "react-hot-loader": "4.8.0",
     "@material-ui/core": "3.9.2",
-    "classnames": "2.2.6"
+    "classnames": "2.2.6",
+    "responsive-gamepad": "1.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",

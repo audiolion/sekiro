@@ -10,6 +10,10 @@ export class Spatial {
   private nodes: SpatialNode[] = [];
   private changeHandlers: SpatialChangeHandler[] = [];
 
+  getActive() {
+    return this.active;
+  }
+
   add(node: SpatialNode) {
     this.nodes.push(node);
     if (!this.active) {

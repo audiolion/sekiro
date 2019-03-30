@@ -21,6 +21,7 @@ export function useSpatial(
     return () => {
       unsubscribeFromChanges();
       spatial.remove(getNode());
+      onRefreshActive(false);
     };
   }, []);
   return isActive;

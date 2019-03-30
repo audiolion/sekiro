@@ -56,10 +56,10 @@ export const Equipment = withStyles(styles)(
             <Typography>Prosthetic Tools</Typography>
           </Header>
           <Row>
-            <Tile size="large" />
-            <Tile size="large" />
-            <Tile size="large" />
-            <Tile size="large" />
+            <Tile size="large">Test</Tile>
+            <Tile size="large">Foo</Tile>
+            <Tile size="large">Bar</Tile>
+            <Tile size="large">Baz</Tile>
           </Row>
         </div>
         <div className={classes.items}>

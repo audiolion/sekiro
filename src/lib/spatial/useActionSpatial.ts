@@ -9,11 +9,14 @@ export function useActionSpatial<T>(
   action: Action
 ) {
   const actionStore = React.useContext(ActionContext);
+  let unmount: () => any = () => {};
   return useSpatial(ref, isActive => {
+    unmount();
     if (isActive) {
-      actionStore.mount(action);
-    } else {
-      actionStore.unmount(action);
+      unmount = actionStore.mount(action);
+      actionStore.setHighlighted(action);
+    } else if (action === actionStore.highlighted) {
+      actionStore.removeHighlighted();
     }
   });
 }

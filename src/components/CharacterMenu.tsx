@@ -4,6 +4,7 @@ import { Typography } from '@material-ui/core';
 import { Equipment } from './Equipment';
 import { SpatialTest } from './SpatialTest';
 import { useAction } from '../lib/action/useAction';
+import { ActionHUD } from './ActionHUD';
 
 export const CharacterMenu = () => {
   useAction({
@@ -11,15 +12,18 @@ export const CharacterMenu = () => {
     name: 'Close'
   });
   return (
-    <TabbedContent
-      tabs={[
-        { label: 'Spatial Test', content: SpatialTest },
-        { label: 'Equipment', content: Equipment },
-        { label: 'Inventory', content: NotImplemented },
-        { label: 'Skills', content: NotImplemented },
-        { label: 'Options', content: NotImplemented }
-      ]}
-    />
+    <>
+      <TabbedContent
+        tabs={[
+          { label: 'Spatial Test', content: SpatialTest },
+          { label: 'Equipment', content: Equipment },
+          { label: 'Inventory', content: NotImplemented },
+          { label: 'Skills', content: NotImplemented },
+          { label: 'Options', content: NotImplemented }
+        ]}
+      />
+      <ActionHUD />
+    </>
   );
 };
 

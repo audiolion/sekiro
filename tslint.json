@@ -14,6 +14,7 @@
     "function-name": false,
     "import-name": false,
     "no-console": false,
-    "forin": false
+    "forin": false,
+    "prefer-array-literal": false
   }
 }

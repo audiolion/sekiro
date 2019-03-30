@@ -7,4 +7,7 @@ export class Item {
   inStorage?: number;
   description: ReactNode;
   description2: ReactNode;
+  type: ItemType = 'consumable';
 }
+
+export type ItemType = 'art' | 'consumable' | 'ninjutsu' | 'tool';

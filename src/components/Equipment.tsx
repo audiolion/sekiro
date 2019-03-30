@@ -7,11 +7,13 @@ import {
 } from '@material-ui/core';
 import { AppState } from '../state/AppState';
 import { Header } from './Header';
-import { Pages } from './Pages';
-import { Page } from './Page';
 import { Stats } from './Stats';
 import { Row } from './Row';
 import { Tile } from './Tile';
+import { ItemPages } from './ItemPages';
+import { Item } from '../state/Item';
+import { ActiveSpatialMeta } from '../lib/spatial/ActiveSpatialMeta';
+import { items } from '../assets/items';
 
 export const styles = createStyles({
   root: {
@@ -48,7 +50,6 @@ export const styles = createStyles({
 
 export const Equipment = withStyles(styles)(
   ({ classes }: WithStyles<typeof styles>) => {
-    const [pageIndex, setPageIndex] = React.useState(0);
     return (
       <div className={classes.root}>
         <div className={classes.tools}>
@@ -56,10 +57,11 @@ export const Equipment = withStyles(styles)(
             <Typography>Prosthetic Tools</Typography>
           </Header>
           <Row>
-            <Tile size="large">Test</Tile>
-            <Tile size="large">Foo</Tile>
-            <Tile size="large">Bar</Tile>
-            <Tile size="large">Baz</Tile>
+            {items.slice(0, 3).map((item, index) => (
+              <Tile key={index} meta={item} size="large">
+                {item.name}
+              </Tile>
+            ))}
           </Row>
         </div>
         <div className={classes.items}>
@@ -86,57 +88,9 @@ export const Equipment = withStyles(styles)(
           </Header>
           <Tile size="large" variant="octagon" />
         </div>
-        <Pages
-          className={classes.pages}
-          value={pageIndex}
-          onChange={setPageIndex}
-        >
-          <Page>
-            <Header variant="doubleEdge">
-              <Typography>Floating Passage</Typography>
-            </Header>
-            <Header variant="noEdge">
-              <Typography>Spirit Emblem Cost</Typography>
-            </Header>
-            <Typography paragraph>
-              Combat Art that unleashes repeated attacks, overwhelming enemies
-              with flowing, dance-like movements.
-            </Typography>
-            <Typography paragraph>
-              While an Ashina Combat Art, it was taught by an outsider, and as
-              such is considered heretical.
-              <br />
-              The master of this technique crossed the Floating Passage and
-              descended to Ashina.
-              <br />
-              Her name was Tomoe.
-            </Typography>
-          </Page>
-          <Page>
-            <Header variant="doubleEdge">
-              <Typography>Ornamental Letter</Typography>
-            </Header>
-            <Header variant="noEdge">
-              <Typography>Number Held</Typography>
-            </Header>
-            <Header variant="noEdge">
-              <Typography>In Storage</Typography>
-            </Header>
-            <Typography paragraph>
-              Combat Art that unleashes repeated attacks, overwhelming enemies
-              with flowing, dance-like movements.
-            </Typography>
-            <Typography paragraph>
-              While an Ashina Combat Art, it was taught by an outsider, and as
-              such is considered heretical.
-              <br />
-              The master of this technique crossed the Floating Passage and
-              descended to Ashina.
-              <br />
-              Her name was Tomoe.
-            </Typography>
-          </Page>
-        </Pages>
+        <ActiveSpatialMeta type={Item}>
+          {item => <ItemPages item={item} />}
+        </ActiveSpatialMeta>
         <AppState.Context.Consumer>
           {({ stats }) => <Stats className={classes.stats} stats={stats} />}
         </AppState.Context.Consumer>

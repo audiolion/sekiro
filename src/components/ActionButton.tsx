@@ -6,6 +6,8 @@ import { Action } from '../lib/action/Action';
 export const ActionButton = ({ input, name }: Action) => (
   <Row>
     <Typography noWrap>{input}:</Typography>
-    <Typography noWrap>{name}</Typography>
+    <Typography noWrap component="div">
+      {name}
+    </Typography>
   </Row>
 );

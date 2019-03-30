@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { SpatialNode } from './SpatialNode';
 import { SpatialContext } from './SpatialContext';
+import { SpatialMeta } from './SpatialMeta';
 
 export function useSpatial(
-  ref: React.RefObject<SpatialNode>,
+  ref: React.RefObject<Element>,
+  meta?: SpatialMeta,
   onRefreshActive: (newIsActive: boolean) => any = () => {}
 ) {
   const getNode = () => ref.current!;
@@ -15,7 +16,7 @@ export function useSpatial(
     onRefreshActive(newIsActive);
   };
   React.useEffect(() => {
-    spatial.add(getNode());
+    spatial.add(getNode(), meta);
     refreshActive();
     const unsubscribeFromChanges = spatial.subscribeToChanges(refreshActive);
     return () => {
@@ -23,6 +24,6 @@ export function useSpatial(
       spatial.remove(getNode());
       onRefreshActive(false);
     };
-  }, []);
+  }, [meta]);
   return isActive;
 }

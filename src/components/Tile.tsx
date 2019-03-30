@@ -4,6 +4,7 @@ import { Box, BoxProps } from './Box';
 import { createStyles, Omit, WithStyles, withStyles } from '@material-ui/core';
 import { Dock } from './Dock';
 import { useActionSpatial } from '../lib/spatial/useActionSpatial';
+import { SpatialMeta } from '../lib/spatial/SpatialMeta';
 
 export const variants = {
   square: {},
@@ -43,6 +44,7 @@ export type TileProps = Omit<BoxProps, 'classes'> &
   WithStyles<typeof styles> & {
     size?: TileSize;
     variant?: TileVariant;
+    meta?: SpatialMeta;
   };
 
 export const Tile = withStyles(styles)(
@@ -52,15 +54,20 @@ export const Tile = withStyles(styles)(
     size = 'small',
     variant = 'square',
     className,
+    meta,
     ...boxProps
   }: TileProps) => {
     const ref = React.useRef<HTMLDivElement>(null);
-    const isActive = useActionSpatial(ref, {
-      input: 'A',
-      name: <>OK ({children})</>,
-      description: 'Replace and confirm equipped items',
-      callback: () => alert('Boo!')
-    });
+    const isActive = useActionSpatial(
+      ref,
+      {
+        input: 'A',
+        name: <>OK ({children})</>,
+        description: 'Replace and confirm equipped items',
+        callback: () => alert('Boo!')
+      },
+      meta
+    );
     return (
       <Box
         innerRef={ref}

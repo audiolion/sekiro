@@ -4,34 +4,43 @@ import { SpatialChangeHandler } from './SpatialChangeHandler';
 import { SpatialNode } from './SpatialNode';
 import { getBoundsForNodes } from './getBoundsForNodes';
 import { Bounds } from './Bounds';
+import { SpatialMeta } from './SpatialMeta';
+import { action, observable } from 'mobx';
 
 export class Spatial {
-  private active?: SpatialNode;
+  @observable private active?: SpatialNode;
   private nodes: SpatialNode[] = [];
+  @observable private meta = new WeakMap<SpatialNode, SpatialMeta>();
   private changeHandlers: SpatialChangeHandler[] = [];
 
   getActive() {
     return this.active;
   }
 
-  add(node: SpatialNode) {
+  getActiveMeta() {
+    return this.meta.get(this.active!);
+  }
+
+  @action add(node: SpatialNode, meta?: SpatialMeta) {
+    this.meta.set(node, meta);
     this.nodes.push(node);
     if (!this.active) {
       this.setActive(node);
     }
   }
 
-  remove(node: SpatialNode) {
-    const index = this.nodes.indexOf(node);
-    if (index !== -1) {
+  @action remove(node: SpatialNode) {
+    this.meta.delete(node);
+    const nodeIndex = this.nodes.indexOf(node);
+    if (nodeIndex !== -1) {
       if (this.active === node) {
         this.setActive(this.getAdjacentNode());
       }
-      this.nodes.splice(index, 1);
+      this.nodes.splice(nodeIndex, 1);
     }
   }
 
-  setActive(newActive?: SpatialNode) {
+  @action setActive(newActive?: SpatialNode) {
     const oldActive = this.active;
     this.active = newActive;
     if (oldActive !== newActive) {

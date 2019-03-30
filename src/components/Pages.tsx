@@ -27,19 +27,21 @@ export type PagesProps = WithStyles<typeof styles> &
   Omit<React.HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'> & {
     value?: number;
     onChange?: (newIndex: number) => any;
-    children: React.ReactElement[];
+    children?: React.ReactElement | React.ReactElement[];
   };
 
 export const Pages = withStyles(styles)((props: PagesProps) => {
   const {
-    children,
+    children = [],
     value = 0,
     onChange = noop,
     classes,
     className,
     ...divProps
   } = props;
-  const childrenArray = React.Children.toArray(children);
+  const childrenArray = React.Children.toArray(
+    children
+  ) as React.ReactElement[];
   const currentPage = childrenArray[value];
   const currentPageWithStyle = React.cloneElement(currentPage, {
     ...currentPage.props,
@@ -49,14 +51,16 @@ export const Pages = withStyles(styles)((props: PagesProps) => {
   return (
     <div {...divProps} className={classNames(classes.pages, className)}>
       {currentPageWithStyle}
-      <Dock style={{ display: 'flex' }} position="bottomRight">
-        <Button onClick={changeToNextPage}>Toggle</Button>
-        <PageIcons
-          value={value}
-          count={childrenArray.length}
-          onChange={onChange}
-        />
-      </Dock>
+      {childrenArray.length > 1 && (
+        <Dock style={{ display: 'flex' }} position="bottomRight">
+          <Button onClick={changeToNextPage}>Toggle</Button>
+          <PageIcons
+            value={value}
+            count={childrenArray.length}
+            onChange={onChange}
+          />
+        </Dock>
+      )}
     </div>
   );
 });

@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { SpatialNode } from './SpatialNode';
 import { Action } from '../action/Action';
 import { ActionContext } from '../action/ActionContext';
 import { useSpatial } from './useSpatial';
+import { SpatialMeta } from './SpatialMeta';
 
 export function useActionSpatial<T>(
-  ref: React.RefObject<SpatialNode>,
-  action: Action
+  ref: React.RefObject<Element>,
+  action: Action,
+  meta?: SpatialMeta
 ) {
   const actionStore = React.useContext(ActionContext);
   let unmount: () => any = () => {};
-  return useSpatial(ref, isActive => {
+  return useSpatial(ref, meta, isActive => {
     unmount();
     if (isActive) {
       unmount = actionStore.mount(action);

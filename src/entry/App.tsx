@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
+import { CssBaseline, MuiThemeProvider } from '@material-ui/core';
 import { hot } from 'react-hot-loader/root';
 import { AppState } from '../state/AppState';
 import { Viewport } from '../components/Viewport';
 import { useObserver } from 'mobx-react-lite';
+import { SpatialContext } from '../lib/spatial/SpatialContext';
 
 export type AppProps = {
   state: AppState;
@@ -15,11 +16,13 @@ export type AppProps = {
  */
 export const App = hot(({ state }: AppProps) =>
   useObserver(() => (
-    <AppState.Context.Provider value={state}>
-      <MuiThemeProvider theme={state.theme}>
-        <CssBaseline />
-        <Viewport />
-      </MuiThemeProvider>
-    </AppState.Context.Provider>
+    <SpatialContext.Provider value={state.nav}>
+      <AppState.Context.Provider value={state}>
+        <MuiThemeProvider theme={state.theme}>
+          <CssBaseline />
+          <Viewport />
+        </MuiThemeProvider>
+      </AppState.Context.Provider>
+    </SpatialContext.Provider>
   ))
 );

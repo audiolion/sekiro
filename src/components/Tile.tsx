@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { useSpatial } from '../lib/spatial/useSpatial';
 import { Box, BoxProps } from './Box';
 import { createStyles, Omit, WithStyles, withStyles } from '@material-ui/core';
 import { Dock } from './Dock';
+import { useActionSpatial } from '../lib/spatial/useActionSpatial';
 
 export const variants = {
   square: {},
@@ -55,7 +55,12 @@ export const Tile = withStyles(styles)(
     ...boxProps
   }: TileProps) => {
     const ref = React.useRef<HTMLDivElement>(null);
-    const isActive = useSpatial(ref);
+    const isActive = useActionSpatial(ref, {
+      input: 'A',
+      name: <>OK ({children})</>,
+      description: 'Replace and confirm equipped items',
+      callback: () => alert('Boo!')
+    });
     return (
       <Box
         innerRef={ref}

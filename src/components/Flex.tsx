@@ -28,21 +28,27 @@ export type FlexProps = WithStyles<typeof styles> &
   };
 
 export const Flex = withStyles(styles)(
-  ({
-    classes,
-    direction = 'row',
-    children,
-    className,
-    style,
-    flex,
-    ...divProps
-  }: FlexProps) => (
-    <div
-      {...divProps}
-      className={classNames(classes[direction], className)}
-      style={{ flex, ...style }}
-    >
-      {children}
-    </div>
+  React.forwardRef<HTMLDivElement, FlexProps>(
+    (
+      {
+        classes,
+        direction = 'row',
+        children,
+        className,
+        style,
+        flex,
+        ...divProps
+      },
+      ref
+    ) => (
+      <div
+        {...divProps}
+        className={classNames(classes[direction], className)}
+        style={{ flex, ...style }}
+        ref={ref}
+      >
+        {children}
+      </div>
+    )
   )
 );

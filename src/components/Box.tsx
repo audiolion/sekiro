@@ -21,13 +21,16 @@ export const styles = (theme: Theme) =>
 export type BoxProps = WithStyles<typeof styles> & Omit<FlexProps, 'classes'>;
 
 export const Box = withStyles(styles)(
-  ({ classes, children, className, ...divProps }: BoxProps) => (
-    <Flex
-      direction="column"
-      className={classNames(classes.box, className)}
-      {...divProps}
-    >
-      {children}
-    </Flex>
+  React.forwardRef<HTMLDivElement, BoxProps>(
+    ({ classes, children, className, ...divProps }, ref) => (
+      <Flex
+        innerRef={ref}
+        direction="column"
+        className={classNames(classes.box, className)}
+        {...divProps}
+      >
+        {children}
+      </Flex>
+    )
   )
 );

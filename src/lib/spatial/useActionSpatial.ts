@@ -6,14 +6,14 @@ import { SpatialMeta } from './SpatialMeta';
 
 export function useActionSpatial<T>(
   ref: React.RefObject<Element>,
-  action: Action,
+  action?: Action,
   meta?: SpatialMeta
 ) {
   const actionStore = React.useContext(ActionContext);
   let unmount: () => any = () => {};
   return useSpatial(ref, meta, isActive => {
     unmount();
-    if (isActive) {
+    if (isActive && action) {
       unmount = actionStore.mount(action);
       actionStore.setHighlighted(action);
     } else if (action === actionStore.highlighted) {

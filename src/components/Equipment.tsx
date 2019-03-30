@@ -10,6 +10,8 @@ import { Header } from './Header';
 import { Pages } from './Pages';
 import { Page } from './Page';
 import { Stats } from './Stats';
+import { Row } from './Row';
+import { Tile } from './Tile';
 
 export const styles = createStyles({
   root: {
@@ -53,21 +55,36 @@ export const Equipment = withStyles(styles)(
           <Header>
             <Typography>Prosthetic Tools</Typography>
           </Header>
+          <Row>
+            <Tile size="large" />
+            <Tile size="large" />
+            <Tile size="large" />
+            <Tile size="large" />
+          </Row>
         </div>
         <div className={classes.items}>
           <Header>
             <Typography>Quick Items</Typography>
           </Header>
+          <Row>
+            <Tile size="small" />
+            <Tile size="small" />
+            <Tile size="small" />
+            <Tile size="small" />
+            <Tile size="small" />
+          </Row>
         </div>
         <div className={classes.arts}>
           <Header>
             <Typography>Combat Arts</Typography>
           </Header>
+          <Tile size="large" variant="octagon" />
         </div>
         <div className={classes.jutsu}>
           <Header>
             <Typography>Ninjutsu</Typography>
           </Header>
+          <Tile size="large" variant="octagon" />
         </div>
         <Pages
           className={classes.pages}

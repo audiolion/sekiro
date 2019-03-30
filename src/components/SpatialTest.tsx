@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AppState } from '../state/AppState';
 import { Button, Typography } from '@material-ui/core';
-import { useSpatial } from '../lib/spatial/useSpatial';
+import { Tile } from './Tile';
 
 export const SpatialTest = () => {
   const [tileCount, setTileCount] = React.useState(0);
@@ -31,18 +31,5 @@ export const SpatialTest = () => {
         )}
       </AppState.Context.Consumer>
     </>
-  );
-};
-
-const Tile = ({ children }: React.PropsWithChildren<object>) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const isActive = useSpatial(ref);
-  return (
-    <div
-      ref={ref}
-      style={{ backgroundColor: isActive ? 'green' : 'red', marginBottom: 10 }}
-    >
-      {children}
-    </div>
   );
 };

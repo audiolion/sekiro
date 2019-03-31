@@ -1,23 +1,40 @@
+import { compose, map, filter, transduce, transformer } from 'transducers.js';
 import { Bounds } from './Bounds';
 import { Direction } from './Direction';
 import { Vector } from './Vector';
+
+type CandidateEntry = {
+  candidate: Bounds | null;
+  cost: number;
+};
 
 export function getNearestNodeInDirection(
   start: Bounds,
   candidates: Bounds[],
   direction: Direction
 ) {
-  const getPoints = pointFunctions[direction];
-  const directionAngle = directionAngles[direction];
-  const nearest = candidates
-    .map(candidate => ({
+  const nearestTransform = compose(
+    map((candidate: Bounds) => ({
       candidate,
       cost: travelCost(getPoints(start, candidate), directionAngle)
-    }))
-    .filter(entry => entry.cost >= 0)
-    .sort((a, b) => a.cost - b.cost);
-  if (nearest.length) {
-    return nearest[0].candidate;
+    })),
+    filter((entry: CandidateEntry) => entry.cost >= 0)
+  );
+
+  const nearestCandidate = (a: CandidateEntry, b: CandidateEntry) =>
+    a.cost < b.cost ? a : b;
+
+  const getPoints = pointFunctions[direction];
+  const directionAngle = directionAngles[direction];
+
+  const { candidate } = transduce(
+    candidates,
+    nearestTransform,
+    transformer(nearestCandidate),
+    { candidate: null, cost: Infinity }
+  );
+  if (candidate) {
+    return candidate;
   }
 }
 
